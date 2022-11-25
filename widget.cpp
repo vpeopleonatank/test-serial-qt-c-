@@ -157,16 +157,18 @@ If it is not found i keep storing received message in buffer.
 
 void Widget::receiveMessage()
 {
-    QByteArray dataBA = serialPort.readAll();
+    QByteArray dataBA = serialPort.read(47);
     QString data(dataBA);
-    buffer.append(data);
-    int index = buffer.indexOf(code);
-    if(index != -1){
-       QString message = buffer.mid(0,index);
-       ui->textBrowser->setTextColor(Qt::blue); // Receieved message's color is blue.
-       ui->textBrowser->append(message);
-       buffer.remove(0,index+codeSize);
-    }
+//    buffer.append(data);
+    ui->textBrowser->setTextColor(Qt::blue); // Receieved message's color is blue.
+    ui->textBrowser->append(data);
+//    int index = buffer.indexOf(code);
+//    if(index != -1){
+//       QString message = buffer.mid(0,index);
+//       ui->textBrowser->setTextColor(Qt::blue); // Receieved message's color is blue.
+//       ui->textBrowser->append(message);
+//       buffer.remove(0,index+codeSize);
+//    }
 
 }
 
